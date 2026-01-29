@@ -1,4 +1,4 @@
-# Python 심화 과정 커리큘럼 v10.0
+# Python 심화 과정 커리큘럼 v10
 
 ## 📋 과정 개요
 
@@ -38,9 +38,9 @@
 
 **복습 교시 (매일 1교시, 50분)**
 
-- 복습 퀴즈: 10분 (간소화!)
-- 핵심 복습: 15분 (전날 가장 중요한 것만!)
-- 새 내용: 25분 (바로 진도!)
+- 복습 퀴즈: 10분
+- 핵심 복습: 15분
+- 새 내용: 25분
 
 **프로젝트 교시 (Day 15)**
 
@@ -77,7 +77,7 @@
 - **Basic (25분)**:
   - 디렉터리 구조
   - 파일 역할
-  - **init**.py
+  - __init__.py
   - 모듈 import 패턴
   - 실전 예제
 - **Practice (15분)**:
@@ -128,92 +128,87 @@
 - **Basic (25분)**:
   - python-dotenv (5분)
   - 설정 클래스 (5분)
-  - Pydantic Settings (5min)
-  - 환경 변수 주입 (5min)
-  - **환경 변수 검증** (필수 값 체크) (5min)
+  - Pydantic Settings (5분)
+  - 환경 변수 주입 (5분)
+  - 환경 변수 검증 (필수 값 체크) (5분)
 - **보안 경고 (5분)**:
-  - **🚨 .gitignore에 .env 필수!**
+  - .gitignore에 .env 필수
     ```
     # .gitignore
     .env
     __pycache__/
     *.pyc
     ```
-  - **.env.example 파일 만들기**:
+  - .env.example 파일 만들기:
     ```
     # .env.example (실제 값 없이 템플릿만)
     DATABASE_URL=your_database_url_here
     SECRET_KEY=your_secret_key_here
     ```
-  - **절대 .env를 커밋하지 말 것!**
-  - **실제 사례 경고**:
+  - 절대 .env를 커밋하지 말 것
+  - 실제 사례 경고:
     - AWS 키 유출 → 수백만 원 청구
     - DB 비밀번호 유출 → 해킹
     - GitHub에서 자동 스캔으로 즉시 발견됨
-- **Practice (5min)**:
+- **Practice (5분)**:
   - .env 파일 생성
   - .gitignore 추가
   - .env.example 작성
-- **Exercise (5min)**:
+- **Exercise (5분)**:
   - 환경별 설정 분리
-
-> **중요 강화**: 보안 경고 명시적 추가 (5분)
-> → 실제 사고 방지!
 
 ### 6교시: 데이터베이스 의존성 ⭐⭐⭐
 
-- **개념 (12min)**:
+- **개념 (12분)**:
   - get_db() 패턴
   - 연결 관리
   - 자동 close
   - yield
   - 트랜잭션
-- **Basic (20min)**:
+- **Basic (20분)**:
   - DB 연결 의존성
   - yield 사용
   - 에러 시 rollback
   - 실전 패턴
-- **Practice (10min)**:
+- **Practice (10분)**:
   - get_db() 구현
   - 엔드포인트에 적용
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - DB 의존성 테스트
 
 ### 7교시: 계층 분리 완전 정복 ⭐⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - Web(라우터) / Service(비즈니스) / Data(DB) 계층
   - 각 계층의 역할과 책임
   - 실전 프로젝트 구조
 
-- **기본 분리 (15min)**:
-  - Basic (10min):
+- **기본 분리 (15분)**:
+  - Basic (10분):
     - 간단한 CRUD 분리
     - 함수 분리 패턴
     - 의존성 흐름
-  - Practice (5min):
+  - Practice (5분):
     - 간단한 CRUD를 계층별로 리팩토링
 
-- **심화 분리 (15min)**:
-  - Basic (10min):
+- **심화 분리 (15분)**:
+  - Basic (10분):
     - 복잡한 비즈니스 로직 분리
     - Service 계층 패턴
     - 트랜잭션 관리
     - 에러 처리 계층별 전략
-  - Practice (5min):
+  - Practice (5분):
     - 게시판 API를 완전한 3계층으로
 
-- **실습 (10min)**:
+- **실습 (10분)**:
   - Exercise: 새 기능을 계층별로 구현
-
-> **중요 통합**: 하루 안에 완전 정복!
 
 ### 8교시: Day 11 종합 실습
 
-- **복습 퀴즈 (10min)**: 프로젝트 구조, DI, 계층 분리
-- **🟢 기초 Problem (15min)**: 계층 구조로 TODO API 리팩토링
-- **🟡 응용 Problem (15min)**: 완전한 3계층 구조 구축 + 의존성 활용
-- **🔴 도전 Problem (10min)**: 의존성 체인 최적화
+- **복습 퀴즈 (10분)**: 프로젝트 구조, DI, 계층 분리
+- **🟢 기초 Problem (15분)**: 계층 구조로 TODO API 리팩토링
+- **🟡 응용 Problem (15분)**: 완전한 3계층 구조 구축 + 의존성 활용
+- **🔴 도전 Problem (10분)**: 의존성 체인 최적화
 
 ---
 
@@ -221,123 +216,123 @@
 
 ### 1교시: Day 11 복습 + 인증 개념
 
-- **복습 퀴즈 (10min)**: 프로젝트 구조, 의존성 주입, 계층 분리
-- **핵심 복습 (15min)**:
+- **복습 퀴즈 (10분)**: 프로젝트 구조, 의존성 주입, 계층 분리
+- **핵심 복습 (15분)**:
   - 3계층 구조 복습
   - 의존성 주입 복습
   - 간단한 Q&A
-- **인증 개념 시작 (25min)**:
-  - 개념 (15min):
+- **인증 개념 시작 (25분)**:
+  - 개념 (15분):
     - Authentication vs Authorization
     - 세션 vs 토큰
     - JWT 소개
     - 보안의 중요성
-  - Basic (10min):
+  - Basic (10분):
     - 인증 흐름 도식화
     - 토큰 기반 인증
 
 ### 2교시: 인증과 인가 개념 + JWT 구조 ⭐⭐⭐
 
-- **개념 완성 (20min)**:
+- **개념 완성 (20분)**:
   - 토큰 기반 인증 심화
   - JWT 구조 (Header/Payload/Signature)
   - 클레임(Claims)
   - 만료 시간
-- **Basic (20min)**:
+- **Basic (20분)**:
   - JWT 디코딩 실습 (jwt.io)
   - 페이로드 구성 예제
   - 보안 고려사항
-- **Practice (10min)**:
+- **Practice (10분)**:
   - JWT 분석 실습
   - 인증 시나리오 분석
 
 ### 3교시: 패스워드 해싱 ⭐⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 평문 저장의 위험성
   - 해시 함수
   - Salt
-- **Basic (22min)**:
+- **Basic (22분)**:
   - passlib 설치 및 사용
   - 해시 생성
   - 해시 검증
   - 안전한 비교
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 패스워드 해싱 함수 구현
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 해싱 도구 함수 작성
 
 ### 4교시: JWT 생성 ⭐⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - JWT 상세 구조
   - 클레임
   - 만료 시간
-- **Basic (22min)**:
+- **Basic (22분)**:
   - python-jose 설치
   - SECRET_KEY, 알고리즘
   - create_access_token() 함수
   - 페이로드 구성
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 토큰 생성 함수 구현
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 커스텀 클레임 추가
 
 ### 5교시: JWT 검증 ⭐⭐⭐
 
-- **개념 (8min)**:
+- **개념 (8분)**:
   - 토큰 검증 프로세스
   - 보안 고려사항
-- **Basic (22min)**:
+- **Basic (22분)**:
   - verify_token() 함수
   - jwt.decode()
   - 예외 처리 (ExpiredSignatureError)
   - 서명 검증
   - 만료 확인
-- **Practice (12min)**:
+- **Practice (12분)**:
   - 토큰 검증 구현
   - 에러 처리 강화
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 토큰 검증 테스트
 
 ### 6교시: 회원가입 구현 ⭐⭐
 
-- **개념 (7min)**:
+- **개념 (7분)**:
   - 회원가입 플로우
   - 사용자 모델
   - 중복 체크
-- **Basic (20min)**:
+- **Basic (20분)**:
   - User 모델 (Pydantic)
   - DB 테이블
   - 중복 이메일 체크
   - 해싱 적용
-- **Practice (13min)**:
+- **Practice (13분)**:
   - 회원가입 API 완성
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - 유효성 검증 강화
 
 ### 7교시: 로그인 구현 ⭐⭐⭐
 
-- **개념 (8min)**:
+- **개념 (8분)**:
   - 로그인 플로우
   - 사용자 검증
   - 토큰 발급
-- **Basic (22min)**:
+- **Basic (22분)**:
   - 로그인 엔드포인트
   - 이메일/패스워드 검증
   - 토큰 생성 및 반환
   - 에러 처리 (401)
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 로그인 API 완성
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - Postman으로 전체 흐름 테스트
 
 ### 8교시: Day 12 종합 실습
 
-- **복습 퀴즈 (10min)**: 해싱, JWT, 인증
-- **🟢 기초 Problem (15min)**: 간단한 인증 시스템 구축
-- **🟡 응용 Problem (15min)**: 회원가입 + 로그인 + 토큰 검증
-- **🔴 도전 Problem (10min)**: 토큰 갱신(Refresh Token) 로직
+- **복습 퀴즈 (10분)**: 해싱, JWT, 인증
+- **🟢 기초 Problem (15분)**: 간단한 인증 시스템 구축
+- **🟡 응용 Problem (15분)**: 회원가입 + 로그인 + 토큰 검증
+- **🔴 도전 Problem (10분)**: 토큰 갱신(Refresh Token) 로직
 
 ---
 
@@ -345,70 +340,70 @@
 
 ### 1교시: Day 12 복습 + OAuth2 시작
 
-- **복습 퀴즈 (10min)**: 패스워드 해싱, JWT, 인증
-- **핵심 복습 (15min)**:
+- **복습 퀴즈 (10분)**: 패스워드 해싱, JWT, 인증
+- **핵심 복습 (15분)**:
   - 로그인 재구현
   - 토큰 검증 복습
   - 간단한 Q&A
-- **OAuth2 개념 시작 (25min)**:
-  - 개념 (15min):
+- **OAuth2 개념 시작 (25분)**:
+  - 개념 (15분):
     - OAuth2란?
     - 흐름(Flow)
     - Password Flow
     - FastAPI의 OAuth2PasswordBearer
-  - Basic (10min):
+  - Basic (10분):
     - OAuth2 구조
     - tokenUrl
 
 ### 2교시: OAuth2 개념 ⭐⭐⭐
 
-- **Basic 완성 (20min)**:
+- **Basic 완성 (20분)**:
   - Bearer 토큰
   - Authorization 헤더
   - 실전 예제
-- **Practice (20min)**:
+- **Practice (20분)**:
   - OAuth2PasswordBearer 설정
   - 플로우 이해 확인
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - OAuth2 패턴 적용
 
 ### 3교시: OAuth2PasswordBearer 구현 ⭐⭐⭐
 
-- **개념 (8min)**:
+- **개념 (8분)**:
   - OAuth2PasswordBearer 사용법
   - 의존성으로 활용
-- **Basic (22min)**:
+- **Basic (22분)**:
   - OAuth2PasswordBearer 인스턴스
   - 토큰 추출
   - 자동 문서 연동
-- **Practice (12min)**:
+- **Practice (12분)**:
   - 기존 인증에 OAuth2 적용
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 토큰 추출 테스트
 
 ### 4교시: 현재 사용자 + 전역 에러 핸들러 ⭐⭐⭐
 
-- **get_current_user (30min)**:
-  - 개념 (7min):
+- **get_current_user (30분)**:
+  - 개념 (7분):
     - get_current_user 패턴
     - 의존성 체인
     - 사용자 정보 활용
-  - Basic (15min):
+  - Basic (15분):
     - get_current_user() 함수
     - 토큰 검증 + DB 조회
     - HTTPException 처리
     - 의존성으로 주입
-  - Practice (5min):
+  - Practice (5분):
     - 현재 사용자 의존성 구현
-  - Exercise (3min):
+  - Exercise (3분):
     - 프로필 API에 적용
 
-- **전역 에러 핸들러 (20min)**:
-  - 개념 (5min):
+- **전역 에러 핸들러 (20분)**:
+  - 개념 (5분):
     - exception_handler 데코레이터
     - 일관된 에러 응답
-    - 프로덕션 필수!
-  - Basic (10min):
+    - 프로덕션 필수
+  - Basic (10분):
     ```python
     from fastapi import FastAPI, Request
     from fastapi.responses import JSONResponse
@@ -436,86 +431,84 @@
             content={"detail": "Internal server error"}
         )
     ```
-  - Practice (3min): 전역 핸들러 추가
-  - Exercise (2min): 커스텀 예외 처리
-
-> **중요 추가**: 프로덕션에서 필수인 전역 에러 핸들러!
+  - Practice (3분): 전역 핸들러 추가
+  - Exercise (2분): 커스텀 예외 처리
 
 ### 5교시: 보호된 엔드포인트 ⭐⭐⭐
 
-- **개념 (8min)**:
+- **개념 (8분)**:
   - 인증 필요 API
   - Depends로 보호
   - 미인증 사용자 차단
-- **Basic (20min)**:
+- **Basic (20분)**:
   - 의존성으로 사용자 요구
   - 자동 문서의 자물쇠
   - 401 Unauthorized
-- **Practice (12min)**:
+- **Practice (12분)**:
   - 마이페이지 API
   - 게시글 작성 API
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - 전체 API에 인증 적용
 
 ### 6교시: 인가 (Authorization) ⭐⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 인증 vs 인가
   - 역할(Role)
   - RBAC
   - 권한 체크
-- **Basic (22min)**:
+- **Basic (22분)**:
   - User 모델에 role 추가
   - 권한 체크 의존성
   - admin만 접근 가능한 API
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 관리자 권한 체크 구현
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 여러 역할 구현
 
 ### 7교시: CORS 설정 ⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - CORS란?
   - Origin
   - Preflight
   - 왜 필요한가?
-- **Basic (20min)**:
+- **Basic (20분)**:
   - CORSMiddleware
   - 허용 도메인
   - 허용 메서드
   - 실전 설정
-- **Practice (12min)**:
+- **Practice (12분)**:
   - CORS 설정
   - 프론트엔드 연동 준비
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 환경별 CORS 설정
 
 ### 8교시: Day 13 종합 실습
 
-- **복습 퀴즈 (10min)**: OAuth2, 인가, CORS, 전역 에러
-- **🟢 기초 Problem (15min)**: OAuth2 인증 적용
-- **🟡 응용 Problem (15min)**: 역할 기반 권한 (user/admin)
-- **🔴 도전 Problem (10min)**: 복잡한 권한 로직
+- **복습 퀴즈 (10분)**: OAuth2, 인가, CORS, 전역 에러
+- **🟢 기초 Problem (15분)**: OAuth2 인증 적용
+- **🟡 응용 Problem (15분)**: 역할 기반 권한 (user/admin)
+- **🔴 도전 Problem (10분)**: 복잡한 권한 로직
 
 ---
 
-## Day 14: 로깅, 미들웨어, 비동기, 테스팅 ⭐⭐⭐
+## Day 14: 로깅, 미들웨어, 비동기, 테스팅
 
 ### 1교시: Day 13 복습 + 로깅 기초 시작
 
-- **복습 퀴즈 (10min)**: OAuth2, 인가, CORS
-- **핵심 복습 (15min)**:
+- **복습 퀴즈 (10분)**: OAuth2, 인가, CORS
+- **핵심 복습 (15분)**:
   - 권한 체크 재구현
   - 전역 에러 핸들러 복습
   - 간단한 Q&A
-- **로깅 기초 시작 (25min)**:
-  - 개념 (12min):
-    - 로깅의 중요성 (프로덕션 필수!)
+- **로깅 기초 시작 (25분)**:
+  - 개념 (12분):
+    - 로깅의 중요성 (프로덕션 필수)
     - print() vs logging
     - 로그 레벨 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     - 디버깅과 모니터링
-  - Basic (13min):
+  - Basic (13분):
     ```python
     import logging
     
@@ -535,28 +528,26 @@
 
 ### 2교시: 로깅 기초 ⭐⭐⭐
 
-- **Basic 완성 (25min)**:
+- **Basic 완성 (25분)**:
   - 로그 레벨 설정
   - 파일 로깅
   - 포맷 설정
   - 실전 예제
-- **Practice (15min)**:
+- **Practice (15분)**:
   - FastAPI에서 로거 사용
   - 엔드포인트별 로깅
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - 에러 로깅 추가
   - 요청/응답 로깅
 
-> **중요**: 프로덕션 레벨이라면 로깅은 필수!
-
 ### 3교시: 로깅 실전 ⭐⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 프로덕션 로깅 전략
   - 로그 레벨 선택 기준
   - 로그 파일 관리
   - 로그 분석
-- **Basic (22min)**:
+- **Basic (22분)**:
   - 로그 파일 로테이션:
     ```python
     from logging.handlers import RotatingFileHandler
@@ -573,25 +564,23 @@
     try:
         # 코드
     except Exception as e:
-        logger.exception("Error occurred")  # 스택 포함!
+        logger.exception("Error occurred")  # 스택 포함
     ```
   - 요청 ID 추가 (미들웨어 연계)
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 로그 전략 수립
   - 실전 로깅 구현
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 프로덕션 로깅 시스템 구축
-
-> **중요 추가**: 로깅 실전 50분 확보!
 
 ### 4교시: 커스텀 미들웨어 ⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 미들웨어란?
   - 요청/응답 전처리
   - 실전 활용 사례
   - CORS 미들웨어 복습
-- **Basic (22min)**:
+- **Basic (22분)**:
   ```python
   from fastapi import Request
   import time
@@ -630,59 +619,55 @@
   ```
   - 실행 시간 측정
   - 요청 로깅
-  - CORS 미들웨어 (복습)
-- **Practice (10min)**:
+  - CORS 미들웨어
+- **Practice (10분)**:
   - 로깅 미들웨어 구현
   - 요청 ID 추적
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 인증 미들웨어
   - 커스텀 헤더 추가
 
-> **중요 추가**: 커스텀 미들웨어 50분 확보!
-
 ### 5교시: 비동기 + httpx ⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 블로킹 vs 논블로킹
   - 동시성
   - I/O 대기 시간
   - FastAPI와 비동기
-  - **언제 사용하나?** (핵심!)
+  - 언제 사용하나? (핵심)
     - 외부 API 호출
     - DB 쿼리 (많은 경우)
     - 파일 I/O
-- **Basic (22min)**:
+- **Basic (22분)**:
   - async def, await 기초
   - httpx 설치 및 사용
   - AsyncClient
   - 외부 API 호출
   - 여러 요청 동시 처리
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 비동기 API 호출 구현
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 여러 외부 API 동시 호출
-
-> **중요**: 깊이보다 "왜 필요한가?" 중심!
 
 ### 6교시: 백그라운드 태스크 + Health Check ⭐⭐
 
-- **백그라운드 태스크 (30min)**:
-  - **개념 (10min)**:
+- **백그라운드 태스크 (30분)**:
+  - 개념 (10분):
     - BackgroundTasks
     - 비동기 작업 처리
     - 사용 사례
-  - **Basic (15min)**:
+  - Basic (15분):
     - BackgroundTasks 사용
     - 이메일 전송 예시
     - 로그 기록
-  - **Practice (5min)**:
+  - Practice (5분):
     - 백그라운드 작업 구현
 
-- **Health Check 엔드포인트 (10min)**:
-  - **개념 (3min)**:
+- **Health Check 엔드포인트 (10분)**:
+  - 개념 (3분):
     - 왜 필요한가? (모니터링, 로드밸런서)
     - 서비스 상태 확인
-  - **Basic (5min)**:
+  - Basic (5분):
     ```python
     @app.get("/health")
     def health_check():
@@ -707,22 +692,20 @@
             "timestamp": datetime.now().isoformat()
         }
     ```
-  - **Practice (2min)**:
+  - Practice (2분):
     - Health Check 엔드포인트 추가
 
-- **Exercise (10min)**:
+- **Exercise (10분)**:
   - 백그라운드 이미지 처리
-
-> **중요 변경**: Health Check 추가 → 프로덕션 필수!
 
 ### 7교시: 테스팅 기초 ⭐⭐⭐
 
-- **개념 (12min)**:
-  - 테스트의 중요성 (프로덕션 필수!)
+- **개념 (12분)**:
+  - 테스트의 중요성 (프로덕션 필수)
   - pytest 소개
   - 단위 테스트 vs 통합 테스트
   - FastAPI TestClient
-- **Basic (20min)**:
+- **Basic (20분)**:
   - pytest 설치
   - 테스트 함수 작성
   - TestClient 사용
@@ -742,22 +725,20 @@
       response = client.post("/users", json={"name": "test"})
       assert response.status_code == 201
   ```
-- **Practice (10min)**:
+- **Practice (10분)**:
   - 간단한 엔드포인트 테스트
   - CRUD 테스트
-- **Exercise (8min)**:
+- **Exercise (8분)**:
   - 기존 API에 테스트 추가
-
-> **중요**: 프로덕션 레벨이라면 테스팅 필수!
 
 ### 8교시: 테스팅 실전 + 파일 처리 ⭐⭐⭐
 
-- **테스팅 실전 (30min)**:
-  - 개념 (5min):
+- **테스팅 실전 (30분)**:
+  - 개념 (5분):
     - fixture
     - 테스트 DB 분리
     - 인증 테스트
-  - Basic (15min):
+  - Basic (15분):
     ```python
     import pytest
     from fastapi.testclient import TestClient
@@ -807,47 +788,45 @@
         assert response.status_code == 200
         assert response.json()["email"] == "admin@test.com"
     ```
-  - Practice (7min):
+  - Practice (7분):
     - fixture 사용
     - 인증 테스트 작성
-  - Exercise (3min):
+  - Exercise (3분):
     - 통합 테스트 작성
 
-- **파일 처리 (20min)**:
-  - 업로드 (10min):
+- **파일 처리 (20분)**:
+  - 업로드 (10분):
     - UploadFile 기본
     - 파일 저장
     - 크기/타입 검증
-  - 다운로드 (10min):
+  - 다운로드 (10분):
     - FileResponse 사용
     - Content-Disposition
 
-> **중요 확대**: 테스팅 실전 30분 확보!
-
 ---
 
-## Day 15: 심화 완성 + 최종 프로젝트 ⭐⭐⭐
+## Day 15: 심화 완성 + 최종 프로젝트
 
 ### 1교시: Day 14 복습 + 심화 마무리
 
-- **복습 퀴즈 (10min)**: 로깅, 미들웨어, 테스팅
-- **핵심 복습 (15min)**:
+- **복습 퀴즈 (10분)**: 로깅, 미들웨어, 테스팅
+- **핵심 복습 (15분)**:
   - 로깅 전략 복습
   - pytest 복습
   - 간단한 Q&A
-- **심화 과정 마무리 (25min)**:
+- **심화 과정 마무리 (25분)**:
   - 지금까지 배운 내용 정리
   - 프로덕션 레벨 체크리스트
   - 실무 적용 방법
 
 ### 2교시: 심화 주제 1 - 캐싱 기초 ⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - 캐싱이란? 성능 최적화
   - 언제 필요한가?
   - TTL (Time To Live)
   - Redis 맛보기
-- **Basic (25min)**:
+- **Basic (25분)**:
   - 간단한 메모리 캐싱
   - functools.lru_cache
   - FastAPI에서 캐싱 패턴
@@ -860,38 +839,38 @@
         # 비용이 큰 연산
         return result
     ```
-- **Practice (10min)**:
+- **Practice (10분)**:
   - API 응답 캐싱
   - 계산 결과 캐싱
-- **Exercise (5min)**:
+- **Exercise (5분)**:
   - 캐싱 전략 설계
 
 ### 3교시: 심화 주제 2 - 배포 개념 ⭐⭐
 
-- **개념 (15min)**:
+- **개념 (15분)**:
   - 로컬 vs 프로덕션
   - 배포란?
   - 클라우드 서비스 (AWS, GCP, Azure)
   - 도메인과 HTTPS
-- **Basic (20min)**:
+- **Basic (20분)**:
   - uvicorn 프로덕션 설정
   - 환경 변수 관리 (실전)
   - 로그 설정
-  - gunicorn (간단히)
-- **Practice (10min)**:
+  - gunicorn
+- **Practice (10분)**:
   - 프로덕션 설정 파일 작성
   - 배포 체크리스트
-- **Exercise (5min)**:
+- **Exercise (5분)**:
   - 배포 전 준비사항 정리
 
 ### 4교시: 심화 주제 3 - Docker 맛보기 ⭐⭐
 
-- **개념 (10min)**:
+- **개념 (10분)**:
   - Docker란?
   - 컨테이너화의 장점
   - 이미지와 컨테이너
   - 왜 필요한가?
-- **Basic (25min)**:
+- **Basic (25분)**:
   - Dockerfile 기본:
     ```dockerfile
     FROM python:3.11-slim
@@ -907,74 +886,69 @@
     ```
   - 이미지 빌드 개념
   - 컨테이너 실행 개념
-- **Practice (10min)**:
+- **Practice (10분)**:
   - Dockerfile 작성
   - requirements.txt 정리
-- **Exercise (5min)**:
+- **Exercise (5분)**:
   - Docker 명령어 학습
-
-> **참고**: 실제 Docker 설치/실행은 선택사항
 
 ### 5교시: 프로젝트 기획 및 설계 ⭐⭐⭐
 
-- **요구사항 분석 (20min)**:
+- **요구사항 분석 (20분)**:
   - 기능 목록 작성
   - 우선순위 결정 (MVP)
   - 로깅 전략
   - 테스트 범위
-  - **필수**: 로깅, 기본 테스트 포함
-- **API 설계 (20min)**:
+  - 필수: 로깅, 기본 테스트 포함
+- **API 설계 (20분)**:
   - 엔드포인트 설계
   - Request/Response 모델
   - 인증/권한 설계
-- **DB 스키마 설계 (10min)**:
+- **DB 스키마 설계 (10분)**:
   - 테이블 구조
   - 관계 설정
 
 ### 6교시: 프로젝트 구현 (1) - 기본 구조 ⭐⭐⭐
 
-- **프로젝트 초기화 (15min)**:
+- **프로젝트 초기화 (15분)**:
   - 디렉터리 구조 (3계층)
   - 가상환경
   - 설정 파일 (.env)
   - 로거 설정
-- **DB 모델 작성 (20min)**:
+- **DB 모델 작성 (20분)**:
   - 테이블 생성
   - 초기 데이터
-- **기본 CRUD (15min)**:
+- **기본 CRUD (15분)**:
   - 핵심 엔드포인트 구현
 
 ### 7교시: 프로젝트 구현 (2) - 인증 및 핵심 기능 ⭐⭐⭐
 
-- **사용자 모델 (10min)**:
+- **사용자 모델 (10분)**:
   - User 테이블
   - 패스워드 해싱
-- **인증 구현 (20min)**:
+- **인증 구현 (20분)**:
   - 회원가입
   - 로그인
   - JWT
-- **핵심 기능 시작 (20min)**:
+- **핵심 기능 시작 (20분)**:
   - 주요 비즈니스 로직
   - Service 계층 활용
 
 ### 8교시: 프로젝트 구현 (3) - 완성 및 코드 리뷰 ⭐⭐⭐
 
-- **기능 완성 (30min)**:
+- **기능 완성 (30분)**:
   - 핵심 기능 완성
   - 검증 강화
   - 로깅 추가
   - 에러 처리
-- **테스트 작성 (10min)**:
+- **테스트 작성 (10분)**:
   - 주요 엔드포인트 테스트
   - pytest 실행
-- **코드 리뷰 + 회고 (10min)**:
+- **코드 리뷰 + 회고 (10분)**:
   - 코드 정리
   - 개인별 피드백
   - 배운 점 공유
   - 향후 학습 방향
-
-> **중요 변경**: 발표 제거, 프로젝트 구현과 코드 리뷰에 집중!
-> → 실전 능력 강화!
 
 ---
 
@@ -988,8 +962,8 @@
 4. **OAuth2 패턴**: 표준 인증 구현
 5. **권한 관리**: 역할 기반 접근 제어
 6. **환경 변수**: 설정 관리, 보안
-7. **로깅**: 기초 + 실전 (프로덕션 필수!)
-8. **테스팅**: 기초 + 실전 (프로덕션 필수!)
+7. **로깅**: 기초 + 실전 (프로덕션 필수)
+8. **테스팅**: 기초 + 실전 (프로덕션 필수)
 9. **전역 에러 핸들러**: 일관된 에러 응답
 10. **커스텀 미들웨어**: 요청/응답 처리
 11. **Health Check**: 서비스 모니터링
@@ -1011,24 +985,11 @@
 
 ---
 
-## 📝 v10.0 주요 변경사항
-
-이 문서는 v9.0과 동일하며, 기초 및 응용 과정의 변경사항과 버전을 맞추기 위해 v10.0으로 업데이트되었습니다.
-
-**v9.0에서의 개선사항 (유지):**
-1. ✅ Day 15 발표 제거: 6-8교시 발표 → 프로젝트 구현 + 코드 리뷰
-2. ✅ Day 15 추가 주제: 2-4교시에 캐싱, 배포, Docker 맛보기
-3. ✅ 프로젝트 시간 확대: 5-8교시 (200분) 프로젝트 집중
-4. ✅ 프로덕션 레벨 완성도 극대화
-5. ✅ 실전 능력 강화: 발표 대신 코딩과 리뷰
-
----
-
 ## 🎓 학습 후 다음 단계
 
 ### 권장 학습 주제
 
-1. **SQLAlchemy ORM** (선택):
+1. **SQLAlchemy ORM**:
    - raw SQL → ORM 전환
    - 관계 매핑
    - 마이그레이션
