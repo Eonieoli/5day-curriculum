@@ -1,4 +1,4 @@
-# Python 기초 과정 커리큘럼 v10.0
+# Python 기초 과정 커리큘럼 v10
 
 ## 📋 과정 개요
 
@@ -643,9 +643,14 @@
 
 ### 7교시: 타입 힌트 (2) - 고급 타입 ⭐⭐⭐
 
-- **개념 (8min)**:
+- **typing import 미리보기 (5min)**:
+  - "내일 import를 자세히 배우지만, 오늘은 일단 따라 쓰세요"
+  - `from typing import List, Dict, Optional, Union`
+  - "typing이라는 모듈에서 타입 도구들을 가져오는 거예요"
+  - "Python에 내장되어 있어서 설치 안 해도 됩니다"
+
+- **개념 (5min)**:
   - 복잡한 타입의 필요성
-  - typing 모듈
   - FastAPI에서의 활용
 
 - **Basic (24min)**:
@@ -693,7 +698,7 @@
   - Optional 활용 (None 반환 함수)
   - 복잡한 타입 조합
   
-- **Exercise (8min)**:
+- **Exercise (6min)**:
   - 타입 힌트가 완벽한 데이터 처리 함수
   - Optional을 활용한 검색 함수
 
@@ -941,13 +946,15 @@
   - 모듈이란? 재사용 가능한 코드
   - 왜 필요? (FastAPI 프로젝트 구조)
   - 남의 코드 vs 내 코드
+  
 - **Basic (22min)**:
   - import 기본: `import json`
   - from import: `from json import dumps, loads`
   - 별칭: `import math as m`
   - 표준 라이브러리 (datetime, random)
-  - **typing import** (중요!):
+  - **typing import (복습!)** (중요!):
     ```python
+    # 어제 써봤죠? 오늘 자세히 설명할게요!
     from typing import List, Dict, Optional, Union
     ```
   - **내 파일 import**:
@@ -977,6 +984,7 @@
   - 모델 모듈 만들기 (클래스 + 타입 힌트)
   - 유틸리티 모듈
   - import하여 사용
+  
 - **Exercise (5min)**:
   - 검증 함수 모듈 작성
   - 여러 모듈 조합
@@ -1046,11 +1054,6 @@
 3. ✅ **학습 흐름 완성**:
    - Day 4: 함수 → 타입 힌트 100분 (자연스러움!)
    - Day 5: 클래스(타입 포함) → 예외처리 → 스코프 + 데코레이터 → import
-
-**v9.0 대비 핵심 개선:**
-- 타입 힌트 100분 확보 (v9.0과 동일)
-- 함수 배우자마자 타입 힌트!
-- FastAPI 준비 완벽!
 
 ---
 
