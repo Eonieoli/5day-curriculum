@@ -1,26 +1,13 @@
-# Python 심화 과정 커리큘럼 v10.0 (SQLAlchemy 버전)
-
-> **📌 이 버전에 대하여**
-> 
-> 이 문서는 **SQLAlchemy를 사용하는 버전**입니다.
-> - 회사 교육용: `python_advanced_curriculum_v10.md` (raw SQL 버전)
-> - 개인 공부용: 이 문서 (SQLAlchemy 버전)
-> 
-> **전제 조건**: Day 9-10에서 SQLAlchemy 기초를 이미 배웠다고 가정합니다.
-> - SQLAlchemy 모델 정의 (Column, Integer, String, ForeignKey)
-> - 세션 관리 (Session, sessionmaker)
-> - 기본 CRUD (query, filter, add, commit, delete)
-> - 관계 (relationship, backref)
-> - FastAPI + SQLAlchemy 통합
+# Python 심화 과정 커리큘럼 v10 (SQLAlchemy)
 
 ## 📋 과정 개요
 
-- **과정명**: Python 심화 과정 (SQLAlchemy 버전)
+- **과정명**: Python 심화 과정 (SQLAlchemy)
 - **목표**: 프로덕션 수준의 FastAPI 백엔드 서버 구축 (SQLAlchemy ORM 사용)
 - **기간**: 5일 (Day 11 ~ Day 15)
 - **일일 시간**: 8교시 (명목상 50분 × 8 = 400분, 실제 약 7시간)
 - **총 시간**: 약 35시간
-- **선수 과정**: Python 기초 과정 (Day 1-5), Python 응용 과정 (Day 6-10, SQLAlchemy 버전)
+- **선수 과정**: Python 기초 과정 (Day 1-5), Python 응용 과정 (Day 6-10, SQLAlchemy)
 - **휴식**: 각 교시 사이 10분, 점심 시간 1시간
 
 ## 🎯 교육 구조
@@ -368,8 +355,27 @@
             db.refresh(post)
             return post
         except Exception as e:
-            db.rollback()  # 에러 시 롤백
-            raise e
+            db.rollback()
+            raise
+    
+    # 에러 처리 계층별 전략
+    # Service: ValueError (비즈니스 로직 에러)
+    # Router: HTTPException (HTTP 에러)
+    
+    # app/routers/posts.py
+    @router.post("/")
+    def create_post(
+        title: str,
+        content: str,
+        user_id: int,
+        db: Session = Depends(get_db)
+    ):
+        try:
+            return post_service.create_post_with_validation(
+                db, title, content, user_id
+            )
+        except ValueError as e:
+            raise HTTPException(status_code=400, detail=str(e))
     ```
   - Practice (5min): 게시판 API를 완전한 3계층으로
 
@@ -378,8 +384,8 @@
 
 ### 8교시: Day 11 종합 실습
 
-- **복습 퀴즈 (10min)**: 프로젝트 구조, DI, 계층 분리, SQLAlchemy Session
-- **🟢 기초 Problem (15min)**: 계층 구조로 TODO API 리팩토링 (SQLAlchemy)
+- **복습 퀴즈 (10min)**: 프로젝트 구조, DI, 계층 분리
+- **🟢 기초 Problem (15min)**: 계층 구조로 TODO API 리팩토링
 - **🟡 응용 Problem (15min)**: 완전한 3계층 구조 구축 + 의존성 활용
 - **🔴 도전 Problem (10min)**: 의존성 체인 최적화
 
@@ -392,7 +398,7 @@
 - **복습 퀴즈 (10min)**: 프로젝트 구조, 의존성 주입, 계층 분리
 - **핵심 복습 (15min)**:
   - 3계층 구조 복습
-  - SQLAlchemy Session 의존성 복습
+  - 의존성 주입 복습
   - 간단한 Q&A
 - **인증 개념 시작 (25min)**:
   - 개념 (15min):
@@ -430,17 +436,6 @@
   - 해시 생성
   - 해시 검증
   - 안전한 비교
-  ```python
-  from passlib.context import CryptContext
-  
-  pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-  
-  def hash_password(password: str) -> str:
-      return pwd_context.hash(password)
-  
-  def verify_password(plain_password: str, hashed_password: str) -> bool:
-      return pwd_context.verify(plain_password, hashed_password)
-  ```
 - **Practice (10min)**:
   - 패스워드 해싱 함수 구현
 - **Exercise (8min)**:
@@ -457,21 +452,6 @@
   - SECRET_KEY, 알고리즘
   - create_access_token() 함수
   - 페이로드 구성
-  ```python
-  from jose import JWTError, jwt
-  from datetime import datetime, timedelta
-  
-  SECRET_KEY = "your-secret-key"
-  ALGORITHM = "HS256"
-  ACCESS_TOKEN_EXPIRE_MINUTES = 30
-  
-  def create_access_token(data: dict) -> str:
-      to_encode = data.copy()
-      expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-      to_encode.update({"exp": expire})
-      encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-      return encoded_jwt
-  ```
 - **Practice (10min)**:
   - 토큰 생성 함수 구현
 - **Exercise (8min)**:
@@ -488,26 +468,6 @@
   - 예외 처리 (ExpiredSignatureError)
   - 서명 검증
   - 만료 확인
-  ```python
-  from jose import JWTError, jwt
-  from fastapi import HTTPException, status
-  
-  def verify_token(token: str) -> dict:
-      try:
-          payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-          email: str = payload.get("sub")
-          if email is None:
-              raise HTTPException(
-                  status_code=status.HTTP_401_UNAUTHORIZED,
-                  detail="Could not validate credentials"
-              )
-          return payload
-      except JWTError:
-          raise HTTPException(
-              status_code=status.HTTP_401_UNAUTHORIZED,
-              detail="Could not validate credentials"
-          )
-  ```
 - **Practice (12min)**:
   - 토큰 검증 구현
   - 에러 처리 강화
@@ -518,9 +478,8 @@
 
 - **개념 (7min)**:
   - 회원가입 플로우
-  - SQLAlchemy User 모델
+  - User 모델 (SQLAlchemy)
   - 중복 체크
-
 - **Basic (20min)**:
   ```python
   # app/models/user.py
@@ -534,41 +493,28 @@
       email = Column(String, unique=True, index=True)
       hashed_password = Column(String)
   
-  # app/schemas/user.py
-  from pydantic import BaseModel, EmailStr
-  
-  class UserCreate(BaseModel):
-      email: EmailStr
-      password: str
-  
-  class UserResponse(BaseModel):
-      id: int
-      email: str
-      
-      class Config:
-          from_attributes = True
-  
   # app/services/auth_service.py
   from sqlalchemy.orm import Session
   from app.models.user import User
-  from app.schemas.user import UserCreate
+  from passlib.context import CryptContext
   
-  def create_user(db: Session, user: UserCreate) -> User:
+  pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+  
+  def create_user(db: Session, email: str, password: str):
       # 중복 체크
-      existing = db.query(User).filter(User.email == user.email).first()
+      existing = db.query(User).filter(User.email == email).first()
       if existing:
           raise ValueError("Email already registered")
       
       # 해싱 적용
-      hashed_password = hash_password(user.password)
-      db_user = User(email=user.email, hashed_password=hashed_password)
+      hashed = pwd_context.hash(password)
       
-      db.add(db_user)
+      user = User(email=email, hashed_password=hashed)
+      db.add(user)
       db.commit()
-      db.refresh(db_user)
-      return db_user
+      db.refresh(user)
+      return user
   ```
-
 - **Practice (13min)**:
   - 회원가입 API 완성
 - **Exercise (10min)**:
@@ -580,42 +526,37 @@
   - 로그인 플로우
   - 사용자 검증
   - 토큰 발급
-
 - **Basic (22min)**:
   ```python
   # app/services/auth_service.py
-  def authenticate_user(db: Session, email: str, password: str) -> User:
+  def verify_password(plain: str, hashed: str) -> bool:
+      return pwd_context.verify(plain, hashed)
+  
+  def authenticate_user(db: Session, email: str, password: str):
+      # 이메일로 사용자 조회 (SQLAlchemy)
       user = db.query(User).filter(User.email == email).first()
       if not user:
           return None
+      
+      # 패스워드 검증
       if not verify_password(password, user.hashed_password):
           return None
+      
       return user
   
   # app/routers/auth.py
-  from fastapi import APIRouter, Depends, HTTPException, status
-  from sqlalchemy.orm import Session
-  from app.database import get_db
-  
-  router = APIRouter(prefix="/auth", tags=["auth"])
+  from app.services.auth_service import authenticate_user, create_access_token
   
   @router.post("/login")
-  def login(
-      email: str,
-      password: str,
-      db: Session = Depends(get_db)
-  ):
+  def login(email: str, password: str, db: Session = Depends(get_db)):
       user = authenticate_user(db, email, password)
       if not user:
-          raise HTTPException(
-              status_code=status.HTTP_401_UNAUTHORIZED,
-              detail="Incorrect email or password"
-          )
+          raise HTTPException(status_code=401, detail="Invalid credentials")
       
-      access_token = create_access_token(data={"sub": user.email})
-      return {"access_token": access_token, "token_type": "bearer"}
+      # 토큰 생성
+      token = create_access_token(data={"sub": user.email})
+      return {"access_token": token, "token_type": "bearer"}
   ```
-
 - **Practice (10min)**:
   - 로그인 API 완성
 - **Exercise (10min)**:
@@ -623,8 +564,8 @@
 
 ### 8교시: Day 12 종합 실습
 
-- **복습 퀴즈 (10min)**: 해싱, JWT, 인증, SQLAlchemy
-- **🟢 기초 Problem (15min)**: 간단한 인증 시스템 구축 (SQLAlchemy)
+- **복습 퀴즈 (10min)**: 해싱, JWT, 인증
+- **🟢 기초 Problem (15min)**: 간단한 인증 시스템 구축
 - **🟡 응용 Problem (15min)**: 회원가입 + 로그인 + 토큰 검증
 - **🔴 도전 Problem (10min)**: 토큰 갱신(Refresh Token) 로직
 
@@ -670,75 +611,59 @@
   - OAuth2PasswordBearer 인스턴스
   - 토큰 추출
   - 자동 문서 연동
-  ```python
-  from fastapi.security import OAuth2PasswordBearer
-  
-  oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
-  
-  # 엔드포인트에서 사용
-  @app.get("/protected")
-  def protected_route(token: str = Depends(oauth2_scheme)):
-      # token에 자동으로 Bearer 토큰이 추출됨
-      return {"token": token}
-  ```
 - **Practice (12min)**:
   - 기존 인증에 OAuth2 적용
 - **Exercise (8min)**:
   - 토큰 추출 테스트
 
-### 4교시: 현재 사용자 (SQLAlchemy) + 전역 에러 핸들러 ⭐⭐⭐
+### 4교시: 현재 사용자 + 전역 에러 핸들러 ⭐⭐⭐
 
 - **get_current_user (30min)**:
   - 개념 (7min):
     - get_current_user 패턴
     - 의존성 체인
-    - SQLAlchemy로 사용자 조회
-  
+    - 사용자 정보 활용
   - Basic (15min):
     ```python
-    # app/dependencies.py
+    # app/dependencies/auth.py
     from fastapi import Depends, HTTPException, status
     from fastapi.security import OAuth2PasswordBearer
-    from sqlalchemy.orm import Session
     from jose import JWTError, jwt
+    from sqlalchemy.orm import Session
     from app.database import get_db
     from app.models.user import User
     
-    oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+    oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
     
     def get_current_user(
         token: str = Depends(oauth2_scheme),
         db: Session = Depends(get_db)
     ) -> User:
         try:
+            # 토큰 검증
             payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
             email: str = payload.get("sub")
             if email is None:
                 raise HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,
-                    detail="Could not validate credentials"
+                    detail="Invalid token"
                 )
         except JWTError:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Could not validate credentials"
+                detail="Invalid token"
             )
         
-        # SQLAlchemy로 사용자 조회
+        # DB에서 사용자 조회 (SQLAlchemy)
         user = db.query(User).filter(User.email == email).first()
         if user is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="User not found"
             )
+        
         return user
-    
-    # 사용 예시
-    @app.get("/me")
-    def read_users_me(current_user: User = Depends(get_current_user)):
-        return current_user
     ```
-  
   - Practice (5min): 현재 사용자 의존성 구현
   - Exercise (3min): 프로필 API에 적용
 
@@ -778,62 +703,36 @@
   - Practice (3min): 전역 핸들러 추가
   - Exercise (2min): 커스텀 예외 처리
 
-### 5교시: 보호된 엔드포인트 (SQLAlchemy) ⭐⭐⭐
+### 5교시: 보호된 엔드포인트 ⭐⭐⭐
 
 - **개념 (8min)**:
   - 인증 필요 API
   - Depends로 보호
   - 미인증 사용자 차단
 - **Basic (20min)**:
-  ```python
-  # app/routers/posts.py
-  from fastapi import APIRouter, Depends
-  from sqlalchemy.orm import Session
-  from app.database import get_db
-  from app.dependencies import get_current_user
-  from app.models.user import User
-  from app.models.post import Post
-  
-  router = APIRouter(prefix="/posts", tags=["posts"])
-  
-  @router.post("/")
-  def create_post(
-      title: str,
-      content: str,
-      db: Session = Depends(get_db),
-      current_user: User = Depends(get_current_user)  # 인증 필수!
-  ):
-      post = Post(
-          title=title,
-          content=content,
-          user_id=current_user.id  # 현재 사용자로 생성
-      )
-      db.add(post)
-      db.commit()
-      db.refresh(post)
-      return post
-  ```
+  - 의존성으로 사용자 요구
+  - 자동 문서의 자물쇠
+  - 401 Unauthorized
 - **Practice (12min)**:
   - 마이페이지 API
   - 게시글 작성 API
 - **Exercise (10min)**:
   - 전체 API에 인증 적용
 
-### 6교시: 인가 (Authorization) - SQLAlchemy ⭐⭐⭐
+### 6교시: 인가 (Authorization) ⭐⭐⭐
 
 - **개념 (10min)**:
   - 인증 vs 인가
   - 역할(Role)
   - RBAC
   - 권한 체크
-
 - **Basic (22min)**:
   ```python
   # app/models/user.py
-  from sqlalchemy import Column, Integer, String, Enum as SQLEnum
+  from sqlalchemy import Column, String, Enum
   import enum
   
-  class UserRole(enum.Enum):
+  class UserRole(str, enum.Enum):
       USER = "user"
       ADMIN = "admin"
   
@@ -843,34 +742,28 @@
       id = Column(Integer, primary_key=True, index=True)
       email = Column(String, unique=True, index=True)
       hashed_password = Column(String)
-      role = Column(SQLEnum(UserRole), default=UserRole.USER)  # 역할 추가!
+      role = Column(String, default=UserRole.USER)
   
-  # app/dependencies.py
+  # app/dependencies/auth.py
   def get_current_admin_user(
       current_user: User = Depends(get_current_user)
   ) -> User:
       if current_user.role != UserRole.ADMIN:
           raise HTTPException(
               status_code=status.HTTP_403_FORBIDDEN,
-              detail="Admin access required"
+              detail="Not enough permissions"
           )
       return current_user
   
-  # 사용 예시
-  @app.delete("/users/{user_id}")
-  def delete_user(
-      user_id: int,
-      db: Session = Depends(get_db),
-      admin: User = Depends(get_current_admin_user)  # admin만!
+  # app/routers/admin.py
+  @router.get("/admin/users")
+  def admin_get_users(
+      current_user: User = Depends(get_current_admin_user),
+      db: Session = Depends(get_db)
   ):
-      user = db.query(User).filter(User.id == user_id).first()
-      if not user:
-          raise HTTPException(status_code=404, detail="User not found")
-      db.delete(user)
-      db.commit()
-      return {"message": "User deleted"}
+      # admin만 접근 가능!
+      return db.query(User).all()
   ```
-
 - **Practice (10min)**:
   - 관리자 권한 체크 구현
 - **Exercise (8min)**:
@@ -896,14 +789,14 @@
 
 ### 8교시: Day 13 종합 실습
 
-- **복습 퀴즈 (10min)**: OAuth2, 인가, CORS, 전역 에러, SQLAlchemy
+- **복습 퀴즈 (10min)**: OAuth2, 인가, CORS, 전역 에러
 - **🟢 기초 Problem (15min)**: OAuth2 인증 적용
 - **🟡 응용 Problem (15min)**: 역할 기반 권한 (user/admin)
 - **🔴 도전 Problem (10min)**: 복잡한 권한 로직
 
 ---
 
-## Day 14: 로깅, 미들웨어, 비동기, 테스팅 ⭐⭐⭐
+## Day 14: 로깅, 미들웨어, 비동기, 테스팅
 
 ### 1교시: Day 13 복습 + 로깅 기초 시작
 
@@ -990,7 +883,6 @@
   - 요청/응답 전처리
   - 실전 활용 사례
   - CORS 미들웨어 복습
-
 - **Basic (22min)**:
   ```python
   from fastapi import Request
@@ -1028,7 +920,9 @@
       
       return response
   ```
-
+  - 실행 시간 측정
+  - 요청 로깅
+  - CORS 미들웨어 (복습)
 - **Practice (10min)**:
   - 로깅 미들웨어 구현
   - 요청 ID 추적
@@ -1085,11 +979,11 @@
             "timestamp": datetime.now().isoformat()
         }
     
-    # DB 연결 체크 포함 (SQLAlchemy)
+    # DB 연결 체크 포함
     @app.get("/health/detailed")
     def detailed_health_check(db: Session = Depends(get_db)):
         try:
-            # DB 연결 테스트
+            # DB 연결 테스트 (SQLAlchemy)
             db.execute("SELECT 1")
             db_status = "healthy"
         except Exception:
@@ -1121,7 +1015,7 @@
   - 기본 assert
   ```python
   from fastapi.testclient import TestClient
-  from app.main import app
+  from main import app
   
   client = TestClient(app)
   
@@ -1131,7 +1025,7 @@
       assert response.json() == {"message": "Hello"}
   
   def test_create_user():
-      response = client.post("/users", json={"email": "test@example.com"})
+      response = client.post("/users", json={"name": "test"})
       assert response.status_code == 201
   ```
 - **Practice (10min)**:
@@ -1145,9 +1039,8 @@
 - **테스팅 실전 (30min)**:
   - 개념 (5min):
     - fixture
-    - 테스트 DB 분리 (SQLAlchemy)
+    - 테스트 DB 분리
     - 인증 테스트
-  
   - Basic (15min):
     ```python
     import pytest
@@ -1208,7 +1101,6 @@
         assert response.status_code == 200
         assert response.json()["email"] == "admin@test.com"
     ```
-  
   - Practice (7min):
     - fixture 사용
     - 인증 테스트 작성
@@ -1226,7 +1118,7 @@
 
 ---
 
-## Day 15: 심화 완성 + 최종 프로젝트 ⭐⭐⭐
+## Day 15: 심화 완성 + 최종 프로젝트
 
 ### 1교시: Day 14 복습 + 심화 마무리
 
@@ -1313,8 +1205,6 @@
 - **Exercise (5min)**:
   - Docker 명령어 학습
 
-> **참고**: 실제 Docker 설치/실행은 선택사항
-
 ### 5교시: 프로젝트 기획 및 설계 ⭐⭐⭐
 
 - **요구사항 분석 (20min)**:
@@ -1385,7 +1275,7 @@
 
 ---
 
-## 📌 핵심 학습 목표 (프로덕션 레벨 + SQLAlchemy)
+## 📌 핵심 학습 목표
 
 ### 최우선 항목 ⭐⭐⭐
 
@@ -1416,58 +1306,6 @@
 
 1. httpx 활용
 2. 성능 최적화 개념
-
----
-
-## 📝 SQLAlchemy 버전 주요 차이점
-
-### raw SQL 버전과의 차이:
-
-1. **DB 연결**:
-   ```python
-   # raw SQL
-   conn = sqlite3.connect("app.db")
-   cursor = conn.cursor()
-   
-   # SQLAlchemy
-   engine = create_engine("sqlite:///./app.db")
-   SessionLocal = sessionmaker(bind=engine)
-   db = SessionLocal()
-   ```
-
-2. **모델 정의**:
-   ```python
-   # raw SQL: 테이블 생성 SQL
-   CREATE TABLE users (id INTEGER PRIMARY KEY, email TEXT)
-   
-   # SQLAlchemy: Python 클래스
-   class User(Base):
-       __tablename__ = "users"
-       id = Column(Integer, primary_key=True)
-       email = Column(String)
-   ```
-
-3. **CRUD 작업**:
-   ```python
-   # raw SQL
-   cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
-   user = cursor.fetchone()
-   
-   # SQLAlchemy
-   user = db.query(User).filter(User.id == user_id).first()
-   ```
-
-4. **관계 처리**:
-   ```python
-   # raw SQL: JOIN
-   SELECT * FROM posts JOIN users ON posts.user_id = users.id
-   
-   # SQLAlchemy: relationship
-   class User(Base):
-       posts = relationship("Post", back_populates="user")
-   
-   user.posts  # 자동으로 관계 데이터 가져옴!
-   ```
 
 ---
 
@@ -1504,15 +1342,5 @@
    - Redis 설치 및 사용
    - 캐싱 전략
    - Session 관리
-
----
-
-## 💡 응용 과정 SQLAlchemy 버전 필요 시
-
-현재 이 문서는 심화 과정만 SQLAlchemy 버전입니다.
-
-**응용 과정 (Day 6-10) SQLAlchemy 버전이 필요하시면 말씀해주세요!**
-- Day 9: SQLAlchemy 기초부터 관계까지
-- Day 10: SQLAlchemy를 활용한 프로젝트
 
 ---
