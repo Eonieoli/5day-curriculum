@@ -342,7 +342,7 @@
   - 접근 `dict["key"]`
   - 추가/수정
   - 삭제 `del`
-  - `in` 연산자
+  - 없는 key 접근 → KeyError 발생!
 - **Practice (12분)**:
   - 학생 정보 딕셔너리
   - 상품 데이터
@@ -357,7 +357,7 @@
   - `get(key, default)` (핵심!)
   - `pop(key)`
   - `update()`
-  - in 연산자
+  - `in` 연산자 (if문 없이 간단히)
 - **Practice (13min)**:
   - 딕셔너리 순회 (items())
   - 안전한 접근 (get())
