@@ -62,7 +62,7 @@ FastAPI 백엔드 개발자 양성을 위한 15일 과정 교육자료를 제작
 # 총 37줄 정도
 ```
 
-#### 3️⃣ 3_exercise_XXX.py (학생 혼자 풀기)
+#### 3️⃣ 3_exercise.py (학생 혼자 풀기)
 
 - **총 코드 라인**: 20-40줄 (주석 포함)
 - **문제 개수**: 1-2개 (Exercise 시간에 따라)
@@ -338,8 +338,8 @@ Practice 작성 방식:
 
 - `1_basic.py`: 강사 시연용 완성 코드 (40-60줄)
 - `2_practice.py`: 강사와 함께 실습 (30-50줄, 점진적 TODO 방식)
-- `3_exercise_XXX.py`: 학생 혼자 푸는 문제 (20-40줄)
-- `solutions/solution_XXX.py`: 완성된 정답 코드
+- `3_exercise.py`: 학생 혼자 푸는 문제 (20-40줄)
+- `3_exercise_solution.py`: 완성된 정답 코드
 
 ---
 
@@ -571,7 +571,7 @@ print("합계:", total)  # 출력: 합계: 150
 
 ---
 
-### 3️⃣ 3_exercise_XXX.py (학생 문제)
+### 3️⃣ 3_exercise.py (학생 문제)
 
 **구조:**
 
@@ -581,7 +581,7 @@ print("합계:", total)  # 출력: 합계: 150
 - 간단한 힌트
 
 ```python
-# 3_exercise_shopping.py
+# 3_exercise.py
 
 """
 Day 1 - 2교시: 변수와 숫자형
@@ -648,7 +648,7 @@ print(f"할인 후: {discounted_total} 원")
 
 ---
 
-### 4️⃣ solutions/solution_XXX.py (정답)
+### 4️⃣ 3_exercise_solution.py (정답)
 
 **구조:**
 
@@ -657,7 +657,7 @@ print(f"할인 후: {discounted_total} 원")
 - 간결하고 명확
 
 ```python
-# solutions/solution_shopping.py
+# 3_exercise_solution.py
 
 """
 Day 1 - 2교시: 변수와 숫자형

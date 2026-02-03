@@ -1,18 +1,57 @@
 # Day 1: Python 시작과 기본 자료형
 
+## Day 1: Python 시작과 기본 자료형 - 01: 파이썬과 환경 구축
+
+### 📂 작성할 파일 목록
+1. `1_hello.py`
+
+### 📋 커리큘럼 내용
+```
+### 1교시: 환경 구축 (50분 전체) ⭐⭐⭐
+
+- **Python 설치 확인 (10분)**:
+  - Python 버전 확인 (`python --version`)
+  - 설치 안 된 학생 개별 지도
+  - 환경 변수 설정 확인
+- **VS Code 설치 및 설정 (10분)**:
+  - VS Code 설치 확인
+  - Python 확장 설치
+  - 기본 설정
+- **Jupyter Notebook 설치 (10분)**:
+  - `pip install jupyter`
+  - 설치 확인
+  - Jupyter 실행 테스트
+- **Git 설치 확인 (5분)**:
+  - Git 버전 확인 (`git --version`)
+  - 설치 안 된 학생 개별 지도
+  - 지금은 버전 관리가 아니라 리눅스 명령어 사용을 위함을 설명
+- **Hello World + 주석 (10분)**:
+  - `print("Hello, World!")`
+  - 주석 (#, """)
+  - 간단한 계산 테스트
+- **트러블슈팅 (10분)**:
+  - 개별 문제 해결
+  - 모든 학생 동일한 환경 확인
+
+> **중요**: 모든 학생이 동일한 환경에서 시작! 문제 있으면 즉시 해결!
+```
+
+### ✅ 작업 요청
+"Hello, World!"를 출력하는 코드와 주석에 대한 코드를 작성해주세요!
+
 ## Day 1: Python 시작과 기본 자료형 - 02: 변수와 숫자형
 
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_shopping.py`
-4. `4_exercise_bmi.py`
-5. `solutions/solution_bmi.py`
-6. `solutions/solution_shopping.py`
+3. `3_exercise.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (8분)**: 
+### 2교시: 변수와 숫자형 ⭐⭐
+
+- **개념 (8분)**:
   - 변수 개념
   - 메모리 저장
   - int/float 타입
@@ -40,14 +79,14 @@
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_greeting.py`
-4. `4_exercise_operations.py`
-5. `solutions/solution_greeting.py`
-6. `solutions/solution_operations.py`
+3. `3_exercise.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (5분)**: 
+### 3교시: 문자열 기본 ⭐⭐
+
+- **개념 (5분)**:
   - 문자열 개념
   - 불변성
   - 작은따옴표/큰따옴표
@@ -74,14 +113,14 @@
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_phone.py`
-4. `4_exercise_email.py`
-5. `solutions/solution_email.py`
-6. `solutions/solution_phone.py`
+3. `3_exercise.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (7분)**: 
+### 4교시: 문자열 인덱싱/슬라이싱 ⭐⭐⭐
+
+- **개념 (7분)**:
   - 인덱스 개념
   - 음수 인덱스
   - 슬라이싱
@@ -108,14 +147,14 @@
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_csv_parsing.py`
-4. `4_exercise_data_cleaning.py`
-5. `solutions/solution_csv_parsing.py`
-6. `solutions/solution_data_cleaning.py`
+3. `3_exercise_csv.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (5분)**: 
+### 5교시: 문자열 메서드 ⭐⭐
+
+- **개념 (5분)**:
   - 메서드란?
   - 불변성 복습
 - **Basic (20분)**:
@@ -131,6 +170,9 @@
 - **Exercise (10분)**:
   - 복합 메서드 활용
   - 실전 데이터 처리
+
+> **제거된 메서드**: capitalize, lstrip, rstrip, join, find, count
+> → 필요할 때 공식 문서 보면 됨!
 ```
 
 ### ✅ 작업 요청
@@ -142,14 +184,14 @@
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_receipt.py`
-4. `4_exercise_report_card.py`
-5. `solutions/solution_receipt.py`
-6. `solutions/solution_report_card.py`
+3. `3_exercise.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (5분)**: 
+### 6교시: f-string ⭐⭐⭐
+
+- **개념 (5분)**:
   - 문자열 포매팅 필요성
   - f-string 장점
 - **Basic (18분)**:
@@ -164,6 +206,8 @@
 - **Exercise (12분)**:
   - 성적표 출력 (평균 소수점 2자리)
   - 영수증 출력 (상품명, 가격, 총액)
+
+> **참고**: 복잡한 포매팅 (정렬, 패딩)은 필요할 때 찾아보면 됨
 ```
 
 ### ✅ 작업 요청
@@ -175,14 +219,14 @@
 ### 📂 작성할 파일 목록
 1. `1_basic.py`
 2. `2_practice.py`
-3. `3_exercise_change_calculator.py`
-4. `4_exercise_temp_converter.py`
-5. `solutions/solution_change_calculator.py`
-6. `solutions/solution_temp_converter.py`
+3. `3_exercise_change.py`
+4. `3_exercise_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
-- **개념 (7분)**: 
+### 7교시: 입출력 + 형변환 ⭐⭐
+
+- **개념 (7분)**:
   - input() 특징 (항상 문자열)
   - 형변환 필요성
 - **Basic (18분)**:
@@ -206,15 +250,17 @@
 ## Day 1: Python 시작과 기본 자료형 - 08: 종합 실습
 
 ### 📂 작성할 파일 목록
-1. `1_basic_profile_card.py`
-2. `2_intermediate_shopping_receipt.py`
-3. `3_advanced_data_processor.py`
-4. `solutions/solution_data_processor.py`
-5. `solutions/solution_profile_card.py`
-6. `solutions/solution_shopping_receipt.py`
+1. `1_basic.py`
+2. `2_intermediate.py`
+3. `3_advanced.py`
+4. `1_basic_solution.py`
+5. `2_intermediate_solution.py`
+6. `3_advanced_solution.py`
 
 ### 📋 커리큘럼 내용
 ```
+### 8교시: Day 1 종합 실습
+
 - **복습 퀴즈 (10분)**: 변수, 숫자형, 문자열, f-string, 형변환
 - **🟢 기초 Problem (15분)**: 프로필 카드 생성기
   - 입력: 이름, 나이, 이메일
