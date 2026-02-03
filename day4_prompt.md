@@ -42,13 +42,29 @@
   - def 키워드
   - 함수 호출
   - return 심화
-  - 여러 개 반환 (튜플)
+  - **여러 개 반환 + 튜플 언패킹 (Day 2 연결!)** ⭐
+```python
+    # Day 2에서 배운 언패킹이 여기서 빛을 발합니다!
+    def get_user_info():
+        name = "Alice"
+        age = 25
+        return name, age  # 튜플로 반환!
+    
+    # 언패킹으로 받기 (Day 2 복습!)
+    user_name, user_age = get_user_info()
+    
+    # 실전 예제
+    def calculate(a, b):
+        return a + b, a - b, a * b
+    
+    plus, minus, mul = calculate(10, 2)
+```
   - 함수 없이 vs 함수 있을 때 비교
   - 실전 예제
 - **Practice (15min)**:
   - 계산 함수
   - 문자열 처리 함수
-  - 여러 값 반환 함수
+  - **여러 값 반환 함수 (튜플 언패킹으로 받기)**
 - **Exercise (10min)**:
   - 온도 변환 함수
   - 인사말 함수
